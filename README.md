@@ -1,5 +1,5 @@
-# [GitHub Action Remote](https://github.com/r3xzt/GitHub-Action-Remote)
-Remote operational GitHub Actions using Chrome Remote Desktop.
+# [Remote GitHub Action](https://github.com/r3xzt/Remote-GitHub-Action)
+Remote operational GitHub Actions VM.
 
 ## **!!! IMPORTANT !!!**
 Actions should not be used for:
@@ -12,28 +12,37 @@ Actions should not be used for:
 I don't accept any responsibility.
 
 ## Available VMs
-* Ubuntu 20.04
-* Ubuntu 18.04
 * Windows Server 2019
 * Windows Server 2016
+* Ubuntu 20.04
+* Ubuntu 18.04
 
 ## Usage
 ### First use
 1. Click `Fork` to create a new repository from GitHub-Action-VM.
-2. [Start](#start)
+2. [Start](#start).
 
 ### Start
-1. Go to [https://remotedesktop.google.com/headless](https://remotedesktop.google.com/headless).
-2. `Begin` > `Next` > `Authorize` > Copy command. ( [Which command?](#which-command) )
+
+#### Chrome Remote Desktop
+1. Go to <https://remotedesktop.google.com/headless>.
+2. `Begin` > `Next` > `Authorize` > Copy command.
 3. Go to `Actions` > (The VM you want to use. ex. Windows Server 2019) > `Run workflow`.
-4. Paste Chrome Remote Desktop Code, And set PIN, VM Time.
+4. Configure VM info.
+* Use workflow from: `Branch: chrome-remote` 
+* Chrome Remote Desktop Code: Paste Chrome Remote Desktop Code.
+* PIN (6 Digits): Choose a 6 Digits PIN.
+* VM Time (Seconds, Maximum 72 hours): Choose how long the VM will keep alive.
 5. Reload and click the latest Workflow runs.
 6. Wait until job `Start Chrome Remote Desktop` end.
 7. Done! You can see the machine in list now.
 * When you're done introspecting, cancel the job.
 
-### Which command?
-* Ubuntu 20.04 > `Debian Linux`
-* Ubuntu 18.04 > `Debian Linux`
-* Windows Server 2019 > `Windows (PowerShell)`
-* Windows Server 2016 > `Windows (PowerShell)`
+##### Which command?
+* Windows Server 2019: Windows (PowerShell)
+* Windows Server 2016: Windows (PowerShell)
+* Ubuntu 20.04: Debian Linux
+* Ubuntu 18.04: Debian Linux
+
+#### ngrok RDP
+Coming soon.

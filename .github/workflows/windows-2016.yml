@@ -6,7 +6,7 @@ on:
         description: 'Chrome Remote Desktop Code | Windows (PowerShell)'
         required: true
       pin:
-        description: '6 Digits PIN'
+        description: 'PIN (6 Digits)'
         required: true
       time:
         description: 'VM Time (Seconds, Maximum 72 hours)'
@@ -16,15 +16,13 @@ jobs:
   build:
     runs-on: windows-2016
     steps:
-    - name: Doanload & Install files
+    - name: Doanload & Install
       run: | 
         Set-NetFirewallProfile -Profile Domain,Public,Private -Enabled False
-        echo "Install: Chrome"
+        echo "Download & Install: Chrome"
         & {$P = $env:TEMP + '\chrome_installer.exe'; Invoke-WebRequest 'https://dl.google.com/chrome/install/latest/chrome_installer.exe' -OutFile $P; Start-Process -FilePath $P -Args '/install' -Verb RunAs -Wait; Remove-Item $P}
-        echo "Install: Chrome Remote Desktop"
+        echo "Download & Install: Chrome Remote Desktop"
         & {$P = $env:TEMP + '\chromeremotedesktophost.msi'; Invoke-WebRequest 'https://dl.google.com/edgedl/chrome-remote-desktop/chromeremotedesktophost.msi' -OutFile $P; Start-Process $P -Wait; Remove-Item $P}
-        echo "Download: Keep Alive"
-        Invoke-WebRequest -Uri "https://raw.githubusercontent.com/r3xzt/Github-Action-CRD/main/loop.bat" -OutFile "loop.bat"
     - name: Start Chrome Remote Desktop
       run: ${{ github.event.inputs.code }} -pin=${{ github.event.inputs.pin }}
     - name: Done! You can see the machine in list now.
