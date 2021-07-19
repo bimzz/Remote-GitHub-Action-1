@@ -1,4 +1,4 @@
-name: Ubuntu 20.04
+name: Ubuntu 18.04
 on: 
   workflow_dispatch:
     inputs:
@@ -14,7 +14,7 @@ on:
         default: "21600"
 jobs:
   build:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-18.04
     steps:
     - name: Create User
       run: sudo useradd -m CRDUser && sudo adduser CRDUser sudo && echo 'CRDUser:CRDUser' | sudo chpasswd
